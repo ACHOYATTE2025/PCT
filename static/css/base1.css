@@ -1,0 +1,47 @@
+
+
+ body{
+
+  background-image: url("im.png");
+ }
+
+
+.loge {
+  width: 200px;
+  transition: transform .3s;
+  }
+
+.loge:hover{
+ 
+  transform: scale(2.0);
+  }
+
+
+.mouve{
+  transition: transform .3s;
+}
+
+.mouve:hover{
+  font-size: 20px;
+  transform: scale(0.5);
+  }
+
+#background-video {
+    height: 100vh;
+    width: 100vw;
+    object-fit: cover;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+  }
+
+#btnVideo {
+    font-size: 1.5rem;
+    background: 0;
+    border: 0;
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }

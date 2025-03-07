@@ -1,0 +1,517 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <title>Gestion ALLAKRO website</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="{% static 'css/fontawesome.css' %}">
+    <link rel="stylesheet" href="{% static 'css/templatemo-tale-seo-agency.css'%}">
+    <link rel="stylesheet" href="{% static 'css/owl.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+<!--
+
+TemplateMo 582 Tale SEO Agency
+
+https://templatemo.com/tm-582-tale-seo-agency
+
+-->
+  </head>
+
+<body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+      window.setTimeout( function(){
+        $('.alert').fadeTo(500, 0).slideUp(500, function(){
+          $(this).remove();
+        });
+      },4000)
+    </script>
+
+
+
+  <!-- ***** Preloader Start ***** -->
+  <div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+  <!-- ***** Preloader End ***** -->
+
+  <!-- ***** Pre-Header Area Start ***** -->
+  <div class="pre-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-sm-9">
+          <div class="left-info">
+            <ul>
+              <li><a href="#"><i class="fa fa-phone"></i>+225 07 48 36 56 19</a></li>
+              <li><a href="#"><i class="fa fa-envelope"></i>infocompany@email.com</a></li>
+              <li><a href="#"><i class="fa fa-map-marker"></i>Abidjan</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-3">
+          <div class="social-icons">
+            <ul>
+              <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+              <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+              <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+              <li><a href="#"><i class="fab fa-google-plus"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ***** Pre-Header Area End ***** -->
+
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    <!-- ***** Logo Start ***** -->
+                    <a href="/" class="logo">
+                        <img src="{% static 'img/logolo.avif' %}" alt="" style="max-width: 112px;">
+                    </a>
+                    <!-- ***** Logo End ***** -->
+                    <!-- ***** Menu Start ***** -->
+                    <ul class="nav">
+
+                      <li class="scroll-to-section"><a href="/" class="active"><b style="font-size:30px">Allakro</a></b></li>
+                      {% if  user.is_authenticated %}
+                      <li class="scroll-to-section">
+                        <a class="scroll-to-section" href="/"><b style='color:yellow'>{{ firstname }} connecté(e)</b></a>
+                      </li>
+                      {% if dash %}
+                      <li><a class="scroll-to-section" href="{% url 'dashboard' %}" id='loge'>Tableau de bord</a></li>
+                      {% endif %}
+                      <li class="scroll-to-section"><a href="{% url 'log_out' %}">Déconnectez-Vous</a></li>
+                      {% else %}
+                      <li class="scroll-to-section"><a href="{% url 'login' %}" >Connectez-Vous</a></li>
+                      <li class="scroll-to-section"><a href="#contact">Inscrivez-Vous</a></li>
+                      <li class="scroll-to-section"><a href="#infos">Infos</a></li>
+                      {% endif %}
+
+                    </ul>
+                    <a class='menu-trigger'>
+                      <span>Menu</span>
+                  </a>
+                    <!-- ***** Menu End ***** -->
+                </nav>
+            </div>
+        </div>
+    </div>
+  </header>
+  <!-- ***** Header Area End ***** -->
+  {% block content %}
+  {% if  user.is_authenticated %}
+  <br>
+  <div class="projects section" id="services" >
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="section-heading" style="margin-top:50px">
+            <h2>Les Différents  <em>Services </em>  <span>disponibles pour Allakro </span></h2>
+            <div class="line-dec"></div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="owl-features owl-carousel">
+            <div class="item">
+              <a href="{% url 'services_acteur' %}"><img src="{% static 'img/habitants.png' %}" alt="" style ="height:250px"></a>
+              <div class="down-content">
+                <h4>Habitants</h4>
+                <a href="{% url 'services_acteur' %}"><i class="fa fa-link"></i></a>
+              </div>
+            </div>
+            <div class="item">
+              <a href= "{% url 'services_naissance' %}"><img src="{% static 'img/naissance.png'%}" alt="" style ="height:250px"></a>
+              <div class="down-content">
+                <h4>Naissance</h4>
+                <a href= "{% url 'services_naissance' %}"><i class="fa fa-link"></i></a>
+              </div>
+            </div>
+            <div class="item">
+              <a href="{% url 'services_deces' %}"> <img src="{% static 'img/deces.jpeg' %}" alt="" style ="height:250px"></a>
+              <div class="down-content">
+                <h4>Les Décès</h4>
+                <a href="{% url 'services_deces' %}" class="fa fa-link"></i></a>
+              </div>
+            </div>
+            <div class="item">
+              <a href="{% url 'services_recherche_emploi' %}"><img src="{% static  'img/emploi.jpg' %}" alt="" style ="height:225px"></a>e
+              <div class="down-content">
+                <h4>Offre d'Emplois</h4>
+                <a href="{% url 'services_recherche_emploi' %}"><i class="fa fa-link"></i></a>
+              </div>
+            </div>
+            <div class="item">
+              <a href="{% url 'services_pharmacie' %}"><img src="{% static 'img/pharma.jpg' %}" alt="" style ="height:250px"></a>
+              <div class="down-content">
+                <h4>Les Pharmacies</h4>
+                <a href="{% url 'services_pharmacie' %}"><i class="fa fa-link"></i></a>
+              </div>
+            </div>
+            <div class="item">
+              <a href="{% url 'services_mouvement' %}"><img src="{% static 'img/arrivant.avif' %}" alt="" style ="height:250px"></a>
+              <div class="down-content">
+                <h4>LES MOUVEMENTS</h4>
+                <a href="{% url 'services_mouvement' %}"><i class="fa fa-link"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% else %}
+  <div class="main-banner" id="top">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-7">
+          <div class="caption header-text">
+            <h6>Gestion d'Allakro</h6>
+            <div class="line-dec"></div>
+            <h4>Bienvenue<em> sur la plateforme</em> d'Allakro </h4>
+
+
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="services section" >
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 offset-lg-6">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="section-heading">
+
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="projects section" id="services" style="margin-top: -150px;">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="section-heading">
+            <h2>Découvrons <em>Allakro</em> &amp; <span>et le voisinage </span></h2>
+            <div class="line-dec"></div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="owl-features owl-carousel">
+            <div class="item">
+              <img src="{% static 'img/a.jpg' %}" alt="" style ="height:418px">
+              <div class="down-content">
+                <h4>Siège UVCI</h4>
+                <a href="#"><i class="fa fa-link"></i></a>
+              </div>
+            </div>
+            <div class="item">
+              <img src="{% static 'img/b.jpg' %}" alt="" style ="height:418px">
+              <div class="down-content">
+                <h4>Siège uvci</h4>
+                <a href="#"><i class="fa fa-link"></i></a>
+              </div>
+            </div>
+            <div class="item">
+              <img src="{% static 'img/alla.jpg' %}" alt="" style ="height:418px">
+              <div class="down-content">
+                <h4>Siège uvci</h4>
+                <a href="#"><i class="fa fa-link"></i></a>
+              </div>
+            </div>
+            <div class="item">
+              <img src="{% static 'img/f.jpg' %}" alt="" style ="height:418px">
+              <div class="down-content">
+                <h4>Village Allakro</h4>
+                <a href="#"><i class="fa fa-link"></i></a>
+              </div>
+            </div>
+            <div class="item">
+              <img src="{% static 'img/g.jpg' %}" alt="" style ="height:420px">
+              <div class="down-content">
+                <h4>Village Allakro</h4>
+                <a href="#"><i class="fa fa-link"></i></a>
+              </div>
+            </div>
+            <div class="item">
+              <img src="{% static 'img/h.jpg' %}" alt="" style ="height:418px">
+              <div class="down-content">
+                <h4>Village Allakro</h4>
+                <a href="#"><i class="fa fa-link"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="infos section" id="infos">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="main-content">
+            <div class="row">
+              <div class="col-lg-6" style="margin-left:25%">
+                <div class="">
+
+                </div>
+              </div>
+              <div class="col-lg-12"   >
+
+                <div class="section-heading"  style='background-color:#8A2BE2 ; width:100%;height:700px;margin-top: 0' >
+
+                  <h2><span><b style='color: black'>Informations</b> </span></h2>
+                  <div class="line-dec"></div>
+                  <center><h3 style='color:white'>Cette plateforme a pour but d'ameliorer le cadre de vie des populations d'Allakro et de leur offrir des services digitaux  </h3></center>
+
+                    <br><br><br>
+                    {% if show %}
+                    {% if user.is_authenticated  %}
+                    {% else  %}
+                <div class=' col' style="margin-left:-40px">
+                    <table class="table table-striped table-bordered"  style="font-size:15px" style =" margin-right:50px">
+
+                      <tr>
+                        <td style='color:{{ paint_naissance }}'>
+                          <b class=" {{ code_naissance }} ">Naissance</b>
+                        </td>
+                        <td style='color:{{ paint_emploi }}'>
+                          <b class=" {{ code_emploi }} ">Offre d'emploi</b>
+                        </td>
+                        <td style='color:{{ paint_deces }}'>
+                          <b class="{{ code_deces}} ">Décès</b>
+                        </td>
+                        <td style='color:{{ paint_amena }}'>
+                          <b class=" {{ code_amena }} ">Les Arrivants</b>
+                        </td>
+                      </tr>
+                      </tr>
+                      <tr>
+                        <td>
+                          <b  >
+                            {{ nbre_naissance}}  cas
+                          </b>
+                        </td>
+                        <td>
+                            <b  >
+                              {{ nbre_emploi}}  cas
+                            </b>
+                        </td>
+                        <td>
+                          <b  >
+                            {{ nbre_deces}}  cas
+                          </b>
+                      </td>
+                      <td>
+                        <b  >
+                          {{ nbre_amena}}  cas
+                        </b>
+                    </td>
+                      </tr>
+
+                    </table>
+                    </div>
+
+                      <p style="color:white" ></p>
+                    {% endif %}
+                    {% endif %}
+
+                    <br>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-us section" id="contact" style="margin-top: -50px" >
+    <div class="container" >
+      <div class="row" >
+        <div class="col-lg-12" >
+          <div class="contact-us-content" >
+            <div class="row" >
+              <div class="col-lg-4">
+                <div id="map">
+                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3972.372842679593!2d-4.0108312250162745!3d5.359951694618813!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfc1eb3498d02c93%3A0xf44acd25ea20ab7f!2sAllakro!5e0!3m2!1sfr!2sci!4v1692611127996!5m2!1sfr!2sci" width="400" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+              </div>
+              <div class="col-lg-8">
+                {% if error %}
+                {% for message in messages%}
+
+                <div class= "alert alert-warning alert-dismissible fade show" role="alert" >
+                  <center><strong>{{ message}}</strong></center>
+                  <button type="button" class="btn-close" data-bs-dismiss ="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  </div>
+                  {% endfor %}
+                  {%else %}
+                  {% for message in messages%}
+                  <div class= "alert alert-success alert-dismissible fade show" role="alert" >
+                    <strong>{{ message}}</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss ="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  {% endfor %}
+                {% endif %}
+                <form id="contact-form" action="{% url 'register' %}" method="post" >
+                  {% csrf_token %}
+                  <div class="row" >
+                    <div class="col-lg-12" >
+                      <div class="section-heading" >
+                        <h2><span>Incrivez vous</span></h2>
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <fieldset>
+                        <input type="name" name="username" id="name" placeholder="Votre Username..." autocomplete="on" required>
+                      </fieldset>
+                    </div>
+                    <div class="col-lg-6">
+                      <fieldset>
+                        <input type="text" name="first_name" id="first_name" placeholder="Votre Nom..." autocomplete="on" required>
+                      </fieldset>
+                    </div>
+                    <div class="col-lg-6">
+                      <fieldset>
+                        <input type="text" name="last_name" id="prenoms" placeholder="Votre prenoms..." autocomplete="on" required>
+                      </fieldset>
+                    </div>
+                    <div class="col-lg-12">
+                      <fieldset>
+                        <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*" placeholder="Votre email.." required="">
+                      </fieldset>
+                    </div>
+                    <div class="col-lg-12">
+                      <fieldset>
+                        <input type="password" name="password" id="mot_de _passe" placeholder="Mot de passe.." autocomplete="on" >
+                      </fieldset>
+                    </div>
+                    <div class="col-lg-12">
+                      <fieldset>
+                        <input type="password" name="confirm_password" id="subject" placeholder="confirm_password..." autocomplete="on" >
+                      </fieldset>
+                    </div>
+                    <div class="col-lg-12">
+
+                    </div>
+                    <div class="col-lg-12">
+                      <fieldset>
+                        <button type="submit" id="form-submit" class="orange-button">Inscription</button>
+                      </fieldset>
+                    </div>
+                  </div>
+                </form>
+                <div class="more-info">
+                  <div class="row">
+                    <div class="col-lg-4">
+                      <div class="info-item">
+                        <i class="fa fa-phone"></i>
+                        <h4><a href="tel:0748365619">+225 07-48-36-56-19</a></h4>
+                      </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <div class="info-item">
+                        <i class="fa fa-envelope"></i>
+                        <h4><a href="mailto:yatte.acho@uvci.edu.com">yatte.acho@uvci.edu.ci/a></h4>
+                        <h4><a href="mailto:acho.quebec@gmail.com">acho.quebec@gmail.com</a></h4>
+                      </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <div class="info-item">
+                        <i class="fa fa-map-marker"></i>
+                        <h4><a href="#">Cocody Abidjan</a></h4>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+  {% endblock  %}
+  <footer>
+    <div class="container">
+      <div class="col-lg-12">
+        <p>Copyright © 2023 <a href="#">Gestion Allakro</a>. All rights reserved.
+
+        <br>Design: <a href="https://groupe01.pct.com" target="_blank"></a></p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+  <script src="{% static 'jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+
+  <script src="{% static 'js/isotope.min.js' %}"></script>
+  <script src="{% static 'js/owl-carousel.js'%}"></script>
+  <script src="{% static 'js/tabs.js' %}"></script>
+  <script src="{% static 'js/popup.js' %}"></script>
+  <script src="{% static 'js/custom.js' %}"></script>
+
+
+  </body>
+
+</html>

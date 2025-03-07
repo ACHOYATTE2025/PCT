@@ -1,0 +1,261 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+        <title>Gestion ALLAKRO</title>
+    
+        <!-- Bootstrap core CSS -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href ="{%  static '/boot/css/bootstrap.css' %}" />
+    <link src ="{%  static '/boot/js/bootstrap.bundle.min.js' %}" />
+    <link rel="stylesheet" href ="{%  static '/boot/css/menu.css' %}" />
+    <link rel="stylesheet" href ="{%  static '/css/services.css' %}" />
+    <link src="{%  static '/boot/js/menu.js' %}" />
+    <link  rel="stylesheet"   href="{% static '/css/navbar.css' %}" >
+    <link rel="stylesheet" href="{% static '/css/signin.css' %}" >
+    <link rel="stylesheet" href="{% static '/css/list.css' %}" >
+    <link rel="stylesheet" href="{% static '/css/galerie.css' %}" >
+    <link rel="stylesheet" href="{% static '/css/base1.css' %}" >
+
+
+    
+    
+    <!-- Custom styles for this template -->
+    <link href="navbar-top-fixed.css" rel="stylesheet">
+  </head>
+  <body >
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+      window.setTimeout( function(){
+        $('.alert').fadeTo(500, 0).slideUp(500, function(){
+          $(this).remove();
+        });
+      },4000)
+    </script>
+   
+       
+  <header>  
+    
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark" aria-label="Tenth navbar example">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">
+                <img src=" {% static '/img/vivi.png' %}" alt='PCT 2023' style="width: 40px; height: 40px; border-radius:10px"/>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/">ALLAKRO</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle active" href="#" id="dropdown08" data-bs-toggle="dropdown" aria-expanded="false">&#9776;Menu</a>
+              <ul class="dropdown-menu" aria-labelledby="dropdown08">
+                {% if  user.is_authenticated %}
+                <li ><a class="dropdown-item " href="{% url 'base1' %}" id='loge'>Services</a></li>
+                <li><a class="dropdown-item" href="{% url 'galerie' %}" id='loge'>Galerie</a></li>
+                {% if dash %} 
+                <li><a class="dropdown-item {{ dash }}" href="{% url 'dashboard' %}" id='loge'>Dashboard</a></li>
+                {% endif %} 
+                <li><a style = ' color: red'  class="dropdown-item" href="/log_out/" id='loge'><b>Déconnexion</b></a></li>
+                {% else %}
+                <li><a class="dropdown-item" href="{% url 'galerie' %}" id='loge'>Galerie</a></li>
+                <li><a  class="dropdown-item" href="{% url 'login' %}" id='loge'>Connexion</a></li>
+            
+              
+                {% endif %}
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="#" tabindex="-1" aria-disabled="true" data-bs-toggle="modal" data-bs-target="#exampleModal">Informations</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+    </nav>
+    
+  </header>
+  
+  
+    
+  {% block content%}
+ 
+
+  <div>
+    <br><br><br><br>
+   </div>
+  
+<main >
+ 
+     
+ 
+  {% if  user.is_authenticated %}    
+  <video id="background-video" autoplay loop muted style="height: 100vh;
+  width: 100vw;
+  object-fit: cover;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;">
+    <source src="https://assets.codepen.io/6093409/river.mp4" type="video/mp4">
+  </video>
+    
+
+    <marquee behavior="alternate">
+      <h3><b style='color:blue'>Bienvenue {{ firstname }} vous êtes désormais connecté</b></h3>
+    </marquee>
+    
+
+  {% else %}
+   
+    <marquee behavior="alternate">
+      <h3 style='color:aqua'>Bienvenue au portail de gestion de Allakro!</h3>
+    </marquee>
+   
+   {% endif %}
+   {% if  user.is_authenticated %}    
+        <div>
+          <br>
+        </div>
+  {% endif %}    
+  {% if  user.is_authenticated %}
+  <div class="album py-5 bg-light">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      <div class="col">
+        <div class="card ">
+          <center><a href="{% url 'services_acteur' %}"><img src="{% static 'img/habitant.png' %}" style='width:185px;border-radius:50%' class="loge"></a></center>
+          <div class="card-body">
+            <center><h3 class="card-text"><b>LES ACTEURS</b></h3></center>
+          </div>
+        </div>
+      </div>
+        
+          <div class="col">
+            <div class="card ">
+              <center><a href="{% url 'services_pharmacie' %}"><img src="{% static 'img/pharmacie.png' %}" style='width:200px; border-radius:50%' class="loge"></a></center>
+               <div class="card-body">
+                <center><h3 class="card-text"><b>LES PHARMACIES</b></h3></center>
+               </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card ">
+              <center><a href="{% url 'services_recherche_emploi' %}"><img src="{% static 'img/recherche_emploi.png' %}" style='width:200px;padding-top:100px;border-radius:50%' class="loge"></a></center>
+               <div class="card-body"  >
+                <center><h3 class="card-text"><b>RECHERCHE EMPLOI</b></h3></center>
+               </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card ">
+              <center><a href="{% url 'services_naissance' %}"><img src="{% static 'img/naissance.png' %}" style='width:200px;border-radius:50%' class="loge"></a></center>
+               <div class="card-body">
+                <center><h3 class="card-text"><b>LES NAISSANCES</b></h3></center>
+               </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card ">
+              <center><a href="{% url 'services_deces' %}"><img src="{% static 'img/deces.jpeg' %}" style='width:190px;border-radius:50%' class="loge"></a></center>
+               <div class="card-body">
+                <center><h3 class="card-text"><b>LES DECES</b></h3></center>
+               </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card ">
+              <center><a href="{% url 'services_mouvement' %}"><img src="{% static 'img/amenagement.jpg' %}" style='width:300px;border-radius:50%' class="loge"></a></center>
+               <div class="card-body">
+                <center><h3 class="card-text"><b>LES MOUVEMENTS</b></h3></center>
+               </div>
+            </div>
+          </div>
+               
+      </div>
+    </div>
+
+
+  {% else %} 
+
+        
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="{%  static 'img/im.png' %}" class="d-block w-100 " alt="..." style="height:600px">
+            </div>
+            <div class="carousel-item">
+              <img src="{%  static 'img/allakro_photos/b.jpg' %}" class="d-block w-100" alt="..." style="height:600px">
+            </div>
+            <div class="carousel-item">
+              <img src="{%  static 'img/allakro_photos/g.jpg' %}" class="d-block w-100" alt="..." style="height:600px">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="false"></span>
+            <span class="visually-hidden"><b>Previous</b></span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="false"></span>
+            <span class="visually-hidden"><b>Next</b></span>
+          </button>
+        </div>
+  
+             
+        
+        {% endif %} 
+  </div>
+  <!-- Copyright -->
+  <footer class="page-footer font-small blue" st>
+    <div class="footer-copyright text-center py-3">© 2023 Copyright:
+      <a href="https://www.groupe01pct.com"> Groupe 01 PCT Developpement</a>
+      <p>Website by: Groupe 01 PCT 2023</p>
+      <p>Contact information: <a href="mailto:acho.quebec@gmail.com">acho.quebec@gmail.com</a></p>
+    </div>
+  </footer>
+  <!-- Copyright -->
+        {% endblock %}
+  </div>
+  <br><br>
+</main>
+  <br>
+  
+ 
+
+  
+
+  
+   <!--- fenêtre modal-->
+   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          Le Projet Commun Tutoré abregé PCT est un projet de fin de cycle àl'UVCI visant à mettre en lumière 
+          les compétences et les connaissances acquises des étudiants durant les 3 ans de formation
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>  
+  </body>
+</html>
+
+    

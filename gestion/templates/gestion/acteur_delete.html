@@ -1,0 +1,220 @@
+
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+        <title>Gestion ALLAKRO</title>
+    
+        <!-- Bootstrap core CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href ="{%  static '/boot/css/bootstrap.css' %}" />
+    <link src ="{%  static '/boot/js/bootstrap.bundle.min.js' %}" />
+    <link rel="stylesheet" href ="{%  static '/boot/css/menu.css' %}" />
+    <link rel="stylesheet" href ="{%  static '/css/services.css' %}" />
+    <link src="{%  static '/boot/js/menu.js' %}" />
+    <link  rel="stylesheet"   href="{% static '/css/navbar.css' %}" >
+    <link rel="stylesheet" href="{% static '/css/signin.css' %}" >
+    <link rel="stylesheet" href="{% static '/css/list.css' %}" >
+
+
+    
+    
+    <!-- Custom styles for this template -->
+    <link href="navbar-top-fixed.css" rel="stylesheet">
+  </head>
+  <body  style="background-color: #f5f5f5 ;">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script>
+    window.setTimeout( function(){
+      $('.alert').fadeTo(500, 0).slideUp(500, function(){
+        $(this).remove();
+      });
+    },4000)
+  </script>
+  <header>  
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark" aria-label="Tenth navbar example">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <div class="collapse navbar-collapse justify-content-md" id="navbarsExample08">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">
+                <img src=" {% static '/img/vivi.png' %}" alt='PCT 2023' style="width: 40px; height: 40px; border-radius:10px"/>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/">ALLAKRO</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle active" href="#" id="dropdown08" data-bs-toggle="dropdown" aria-expanded="false">&#9776;Menu</a>
+              <ul class="dropdown-menu" aria-labelledby="dropdown08">
+                {% if  user.is_authenticated %}
+                <li><a class="dropdown-item" href="{% url 'base1' %}">Services</a></li>
+                <li><a class="dropdown-item" href="/log_out/">Déconnexion</a></li>
+                {% else %}
+                <li><a class="dropdown-item" href="{% url 'login' %}">Connexion</a></li>
+                <li><a class="dropdown-item" href="{% url 'galerie' %}">Galerie</a></li>
+                {% endif %}
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="#" tabindex="-1" aria-disabled="true" data-bs-toggle="modal" data-bs-target="#exampleModal">Informations</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link "  href="/services_acteur/" tabindex="-1"  >Retour</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    
+        <div class="col-md-3">
+          <form >
+            <div class ="card-body row no-guitters align-items-center">
+                <div class ="col">
+                  <input type="search" name="item_name"  placeholder=" Entrer le nom recherché" class="form-control"/>
+                </div>
+                <div class="col-auto">
+                  <button type="submit" class="btn btn-success">Recherche</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+        
+      
+    </nav>
+   
+    
+  </header>
+   <!--- fenêtre modal-->
+   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          Le Projet Commun Tutoré abregé PCT est un projet de fin de cycle àl'UVCI visant à mettre en lumière 
+          les compétences et les connaissances acquises des étudiants durant les 3 ans de formation
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>  
+  
+    
+  {% block content%}
+  <br><br><br>
+  <marquee behavior="alternate"  style=" position:relative">
+    <h3 style='color:blue'> LISTE DES ACTEURS D'ALLAKRO </h3>
+  </marquee>
+  <div  >
+    
+    <center>{% for message in messages%}
+      <div  style=' width:800px ; font-size:18px' class= "alert alert-success alert-dismissible fade show" role="alert" >
+        <strong>{{ message}}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss ="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+            {% endfor %}
+  </center>
+  
+  <div class="row" > 
+    {% for item in list %}
+    <div class="col-md-4">
+      <div class="card" >
+        <div class="card-body">
+        <ul class="list-group" style=" font-size:20px" >
+          
+          <li class="list-group-item"  >
+            
+            <span class="text-primary"><b>ACTEUR N°: </b></span> <span style=" background-color : blue ;border :5px solid blue;border-radius: 50%"><b style="color:white">{{ item.acteur.id}}</b></span>
+              <br>
+              <span class="text-success">Nom: </span> <span><b>{{ item.acteur.nom_acteur}}</b></span>
+              <br>
+              <span class="text-success">Prénoms: </span><span><b>{{ item.acteur.prenom_acteur}}</b></span>
+              <br>
+              <span class="text-success">Contact: </span><span><b>{{ item.acteur.contact_acteur}}</b></span>
+              <br>
+              <span class="text-success">Email: </span><span ><b>{{ item.acteur.email_acteur  }}</b></span>
+              <br>
+              <span class="text-success">Age  </span><span><b>{{ item.acteur.age_acteur }}</b></span>
+              <br>
+              <span class="text-success">Nombre d'enfants: </span><span><b>{{ item.acteur.nombre_enfants }}</b></span>
+              <br>
+              <span class="text-success">Métier : </span><span><b>{{ item.acteur.statut_prof }}</b></span>
+              <br>
+              <span class="text-success">Pays de naissance: </span><span><b>{{ item.acteur.pays_naissance }}</b></span>
+              <br>
+              <span class="text-success">Situation matrimoniale: </span><span><b>{{ item.acteur.situation_matrimoniale }}</b></span>
+              <br>
+              <span class="text-success">Compétences: </span><span><b>{{ item.acteur.competences_acteur }}</b></span>
+              <br>
+              <span class="text-success">Nationalité:</span><span><b>{{ item.acteur.nationalité_acteur }}</b></span>
+              <br style=" border:  5px solid black">
+              <a class="btn btn-info btn-sm active" role="button" href="{% url 'acteur_details' item.acteur.pk  %}">Détails</a></li>
+          </li>
+                
+        </ul>
+      
+        </div>
+      </div>
+      </div>
+      {% endfor %}
+    </div>
+   <div class="row mt-3" style=' margin-left:300px'>
+    <div class="col-md-3 offset-md-4">
+      <ul class="pagination">
+        {% if it.has_previous %}
+        <li class="page_item">
+          <a class="page-link" href="?page={{it.previous_page_number}}">Precedent</a>
+        </li>
+        {% endif %}
+  
+        <li class="page-item active">
+          <a  class="page-link" href="?page={{it.number}}">{{it.number}}</a>
+        </li>
+  
+        {% if it.has_next %}
+        <li class="page_item">
+          <a  class="page-link" href="?page={{it.next_page_number}}">Suivant</a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+   </div>
+    {% endfor %}
+  </div>
+ <div class="row mt-3" style=' margin-left:300px'>
+  <div class="col-md-3 offset-md-4">
+    <ul class="pagination">
+      {% if it.has_previous %}
+      <li class="page_item">
+        <a class="page-link" href="?page={{it.previous_page_number}}">Precedent</a>
+      </li>
+      {% endif %}
+
+      <li class="page-item active">
+        <a  class="page-link" href="?page={{it.number}}">{{it.number}}</a>
+      </li>
+
+      {% if it.has_next %}
+      <li class="page_item">
+        <a  class="page-link" href="?page={{it.next_page_number}}">Suivant</a>
+      </li>
+      {% endif %}
+    </ul>
+  </div>
+ </div>
+
+ {% endblock %}
+</body>
+</html>

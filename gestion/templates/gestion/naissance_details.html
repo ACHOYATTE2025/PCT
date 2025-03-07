@@ -1,0 +1,68 @@
+{% extends 'base1.html' %}
+<style>
+      .btn btn-primary btn-sm{background-color: antiquewhite;}
+      
+    </style>
+    
+{% block content %}
+      <br><br><br><br><br>
+      <h2> Les Details sur la Naissance <b style= " color: aqua">{{  naissance.nom_nouveau_ne   }}</b></h2>
+      <hr>
+      {% if centre_sante %}
+      {% for item in centre_sante %}
+      <ul>
+        <h4> <em>Au titre des Visites</em></h4>
+        <li class="list-group-item">
+          <span class="text-info">Nom de l'Acteur ayant visité la Pharmacie : </span> <span>{{ item.centre_sante_naissance.nom_acteur_sante.nom_acteur}}</span>
+          <br>
+          <span class="text-info">genre de l'Acteur :</span><span>{{ item.centre_sante_naissance.nom_acteur_sante.genre_acteur}}</span>
+          <br>
+          <span class="text-info">Hopital visité:</span><span>{{ item.centre_sante_naissance.Libele_sante}} </span>
+          <br>
+          
+          <hr>
+        </li>
+      </ul>
+      {% endfor %} 
+      {% else %}
+      <h4> <em style='margin-left:25px'>Aucune Visite </em><h4>
+      <hr>
+      {% endif %}
+
+      <center>
+        {% if delete %}
+        <span style='margin-left: 20px'><a class="btn btn-warning btn-sm active" role="button" href="{% url 'naissance_edit' naissance.pk %}">Editer les Informations</a></span>
+        <span style='margin-left: 20px'><a class="btn btn-danger btn-sm active" data-bs-toggle="modal" data-bs-target="#modal" role="button" >Supprimer</a></span>
+        {% endif %}
+      <span style='margin-left: 20px'><a class="btn btn-success btn-sm active" role="button" href="{% url 'naissance_list' %}">Retour</a></span></center> 
+          <br>
+      
+    <!-- Copyright -->
+  <footer class="page-footer font-small blue" >
+    <div class="footer-copyright text-center py-3">© 2023 Copyright:
+      <a href="https://www.groupe01pct.com"> Groupe 01 PCT Developpement</a>
+      <p>Website by: Groupe 01 PCT 2023</p>
+      <p>Contact information: <a href="mailto:acho.quebec@gmail.com">acho.quebec@gmail.com</a></p>
+    </div>
+  </footer>
+  <!-- Copyright -->
+  <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          
+        </div>
+        <div class="modal-body">
+          <p>Vous êtes sur le point de supprimer definitivement!!!🚨🚨🚨</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+          <a type="button" class="btn btn-warning" href="{% url 'naissance_delete' naissance.pk %}">Supprimer</a>
+        </div>
+      </div>
+    </div>
+  </div>
+    {% endblock %}
+
+
+      

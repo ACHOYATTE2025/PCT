@@ -1,0 +1,251 @@
+
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <title>Gestion ALLAKRO website</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="{% static 'css/fontawesome.css' %}">
+    <link rel="stylesheet" href="{% static 'css/templatemo-tale-seo-agency.css'%}">
+    <link rel="stylesheet" href="{% static 'css/owl.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+<!--
+
+TemplateMo 582 Tale SEO Agency
+
+https://templatemo.com/tm-582-tale-seo-agency
+
+-->
+  </head>
+
+<body >
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+      window.setTimeout( function(){
+        $('.alert').fadeTo(500, 0).slideUp(500, function(){
+          $(this).remove();
+        });
+      },4000)
+    </script>
+
+  <video id="background-video" autoplay loop muted style="height: 100vh;
+  width: 100vw;
+  object-fit: cover;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;">
+    <source src="https://assets.codepen.io/6093409/river.mp4" type="video/mp4">
+  </video>
+   
+   
+
+  <!-- ***** Preloader Start ***** -->
+  <div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+  <!-- ***** Preloader End ***** -->
+
+  <!-- ***** Pre-Header Area Start ***** -->
+  <div class="pre-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-sm-9">
+          <div class="left-info">
+            <ul>
+              <li><a href="#"><i class="fa fa-phone"></i>+000 1234 5678</a></li>
+              <li><a href="#"><i class="fa fa-envelope"></i>infocompany@email.com</a></li>
+              <li><a href="#"><i class="fa fa-map-marker"></i>Abidjan</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-3">
+          <div class="social-icons">
+            <ul>
+              <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+              <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+              <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+              <li><a href="#"><i class="fab fa-google-plus"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ***** Pre-Header Area End ***** -->
+
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    <!-- ***** Logo Start ***** -->
+                    <a href="/" class="logo">
+                        <img  src="{% static 'img/logolo.avif' %}" alt="" style="max-width: 112px;">
+                    </a>
+                    <!-- ***** Logo End ***** -->
+                    <!-- ***** Menu Start ***** -->
+                    <ul class="nav">
+                      <li class="scroll-to-section"><a href="/" class="active"><b style="font-size:40px">Allakro</b></a></li>
+                      {% if  user.is_authenticated %}
+                      <li class="scroll-to-section"><a href="#services">Services</a></li>
+                      {% if dash %} 
+                      <li><a class="scroll-to-section" href="{% url 'dashboard' %}" id='loge'>Tableau de bord</a></li>
+                      {% endif %} 
+                      <li class="scroll-to-section"><a href="#projects">Déconnectez-Vous</a></li>
+                      {% else %} 
+                      <li class="scroll-to-section"><a href="/">Inscrivez-Vous</a></li>
+                     
+                      {% endif %} 
+                      {% if  user.is_authenticated %}
+                      <li class="scroll-to-section"><h5><b style='color:orangered'>{{ firstname }} connecté(e)</b></h5></li>
+                      {% endif %} 
+                    </ul>   
+                    
+                    <!-- ***** Menu End ***** -->
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <br><br><br><br>
+<div class="contact-us section" id="contact" style="margin-top: -18px">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 offset-lg-3" >
+        <div class="contact-us-content" style="background-color: orange">
+          <div class="row" style="background-color: white">
+            <div class="col">
+             
+            </div>
+            <div class="col-lg-12">
+              {% if error %}
+              {% for message in messages%}
+                               
+              <div class= "alert alert-warning alert-dismissible fade show" role="alert" >
+                <center><strong>{{ message}}</strong></center>
+                <button type="button" class="btn-close" data-bs-dismiss ="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                </div> 
+                {% endfor %}
+                {%else %}
+                {% for message in messages%}
+                <div class= "alert alert-success alert-dismissible fade show" role="alert" >
+                  <strong>{{ message}}</strong>
+                  <button type="button" class="btn-close" data-bs-dismiss ="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                {% endfor %}
+              {% endif %}
+              <form id="contact-form" method="POST" action="{% url 'home' %}">
+                {% csrf_token %}
+               
+                <div class="row">
+                  <div class="col-lg-12 ">
+                    <div class="section-heading" >
+                      <h2><span style='color:orange'>Veuillez vous connecter!</span></h2>
+                    </div>
+                  </div>
+                  <div class="col-lg-12" >
+                    <fieldset>
+                      <input type="name" name="username" id="name" placeholder="Votre Username..." autocomplete="on" required>
+                    </fieldset>
+                  </div>
+                  <div class="col-lg-12">
+                    <fieldset>
+                      <input type="password" name="password" id="password" placeholder="Votre mot de passe..." autocomplete="on" required>
+                    </fieldset>
+                  </div>
+                  <div class="col-lg-12">
+                    <fieldset>
+                      <button type="submit" id="form-submit" class="orange-button" style='background-color:green'>Connexion</button>
+                    </fieldset>
+                  </div>
+                  
+                </div>
+              </form>
+              <div class="more-info">
+                <div class="row">
+                  <div class="col-lg-4">
+                    <div class="info-item">
+                      <i class="fa fa-phone"></i>
+                      <h4><a href="tel:0748365619">+225 07 48 36 56 19</a></h4>
+                    </div>
+                  </div>
+                  <div class="col-lg-4">
+                    <div class="info-item">
+                      <i class="fa fa-envelope"></i>
+                      <h4><a href="mailto:yatte.acho@uvci.edu.com">yatte.acho@uvci.edu.ci   </a></h4>
+                      <h4><a href="mailto:acho.quebec@gmail.com">acho.quebec@gmail.com</a></h4>
+                    </div>
+                  </div>
+                  <div class="col-lg-4">
+                    <div class="info-item">
+                      <i class="fa fa-map-marker"></i>
+                      <h4><a href="#">    Cocody </a></h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<footer>
+  <div class="container">
+    <div class="col-lg-12">
+      <p>Copyright © 2023 <a href="#">Gestion Allakro</a>. All rights reserved. 
+      
+      <br>Design: <a href="https://groupe01.pct.com" target="_blank"></a></p>
+    </div>
+  </div>
+</footer>
+
+
+<!-- Scripts -->
+<!-- Bootstrap core JavaScript -->
+<script src="{% static 'jquery/jquery.min.js' %}"></script>
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+
+<script src="{% static 'js/isotope.min.js' %}"></script>
+<script src="{% static 'js/owl-carousel.js'%}"></script>
+<script src="{% static 'js/tabs.js' %}"></script>
+<script src="{% static 'js/popup.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
+
+
+
+</body>
+
+</html>

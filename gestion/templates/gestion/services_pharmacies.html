@@ -1,0 +1,108 @@
+{% extends 'base1.html' %}
+{% load static %}
+
+    
+  {% block content%}
+  
+
+  <div>
+    <br><br><br><br><br><br>
+   </div>
+  
+<main >
+     
+ 
+  {% if  user.is_authenticated %}      
+
+    <marquee behavior="alternate">
+      <h3><b style='color:blue'>Services des Pharmacies</b></h3>
+    </marquee>
+    
+
+  {% else %}
+   
+    <marquee behavior="alternate">
+      <h3>Bienvenue au portail de gestion de Allakro!</h3>
+    </marquee>
+   
+   {% endif %}
+   {% if  user.is_authenticated %}    
+        <div>
+          <br>
+        </div>
+  {% endif %}    
+  {% if  user.is_authenticated %} 
+  <div class="album py-5 bg-light">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 g-3">
+      <div class="col">
+        <div class="card ">
+          <center><a href="{% url 'pharmacie_list' %}"><img src="{% static 'img/pharma.jpg' %}" style='width:200px;border-radius:50%'></a></center>
+          <div class="card-body">
+            <center><h3 class="card-text"><b>CONSULTER</b></h3></center>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card ">
+          <center><a href="{% url 'pharmacie_edit' %}"><img src="{% static 'img/pharma.jpg' %}" style='width:200px;border-radius:50%'></a></center>
+          <div class="card-body">
+            <center><h3 class="card-text"><b>AJOUTER</b></h3></center>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>        
+<center>
+  <div>
+  <a class="btn btn-primary  active" role="button" href="{% url 'base1'  %}">Retour</a>
+  </div> 
+</center>      
+   <div>
+    <br><br><br><br><br>
+   </div>
+  
+
+  {% else %} 
+  
+        {% endif %} 
+  </div>
+ 
+  <!-- Copyright -->
+  
+  <!-- Copyright -->
+        {% endblock %}
+  </div>
+  <br><br>
+</main>
+  <br>
+  {% if  user.is_authenticated %}    
+        <div>
+          <br>
+        </div>
+  {% endif %}          
+  
+ 
+
+  
+
+  
+   <!--- fenêtre modal-->
+   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          Le Projet Commun Tutoré abregé PCT est un projet de fin de cycle àl'UVCI visant à mettre en lumière 
+          les compétences et les connaissances acquises des étudiants durant les 3 ans de formation
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>  
+  </body>
+</html>
+
+    

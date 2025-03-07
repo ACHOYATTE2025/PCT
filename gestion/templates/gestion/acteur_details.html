@@ -1,0 +1,102 @@
+{% extends 'base1.html' %}
+<style>
+      .btn btn-primary btn-sm{background-color: antiquewhite;}
+      
+    </style>
+    
+{% block content %}
+      <br><br><br><br><br>
+      <h2> Les Details sur l'Acteur <b style= " color: aqua">{{  acteur.nom_acteur   }}</b></h2>
+      <hr>
+      {% if deces %}
+      {% for item in deces %}
+      <ul>
+        <h4> <em>Au titre du décès</em></h4>
+        <li class="list-group-item">
+          <span class="text-info">Date de déces : </span> <span>{{ item.date_deces  }}</span>
+          <br>
+          <span class="text-info">Lieu de déces: </span><span>{{ item.lieu_deces}}</span>
+          <hr>
+        </li>
+      </ul>
+      {% endfor %} 
+      {% else %}
+      <h4> <em style='margin-left:25px'>Toujours en Vie </em><h4>
+      <hr>
+      {% endif %}
+
+
+      {% if  recherche_emploi %}
+      {% for item in recherche_emploi %}
+      <ul>
+        <h4> <em>Au titre de la Recherche d'Emploi</em></h4>
+        <li class="list-group-item">
+          <span class="text-info">Emploi recherché : </span> <span>{{ item.libele_emploi }}</span>
+          <br>
+          <span class="text-info">Compétences: </span><span>{{ item.acteur.competences_acteur}}</span>
+          <br>
+          <span class="text-info">Date de demande: </span><span>{{ item.date_demande}}</span>
+          <hr>
+        </li>
+      </ul>
+      {% endfor %}
+      {% else %}
+      <h4> <em style='margin-left:25px'>Aucune Recherche d'emploi </em><h4>
+      <hr>
+    {% endif %}
+      
+    {% if  communication %}
+      {% for item in communication %}
+      <ul>
+        <h4> <em>Au titre des Outils de Communication</em></h4>
+        <li class="list-group-item">
+          <span class="text-info">Outils de Communication : </span> <span>{{ item.libele_comm}}</span>
+          <br>
+          <span class="text-info">Date d'acquisition: </span><span>{{ item.date_com}}</span>
+          <hr>
+        </li>
+      </ul>
+      {% endfor %}
+      {% else %}
+      <h4> <em style='margin-left:25px'>Aucun Outil de Communication </em><h4>
+      <hr>
+    {% endif %} 
+
+         
+    
+    <center> 
+       
+        {% if delete %}
+        <span style='margin-left: 20px'><a class="btn btn-warning btn-sm active" role="button" href="{% url 'acteur_edit' acteur.pk %}">Editer les Informations</a></span>
+            <span style='margin-left: 20px'><a class="btn btn-danger btn-sm active" data-bs-toggle="modal" data-bs-target="#modal" role="button" >Supprimer</a></span>
+        {% endif %}
+        <span style='margin-left: 20px'><a class="btn btn-success btn-sm active" role="button" href="{% url 'acteur_list' %}">Retour</a></span></center> 
+      <br>
+    <!-- Copyright -->
+  
+  <!-- Copyright -->
+  <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          
+        </div>
+        <div class="modal-body">
+          <p>Vous êtes sur le point de supprimer definitivement!!!🚨🚨🚨</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+          <a type="button" class="btn btn-warning" href="{% url 'acteur_delete' acteur.pk %}">Supprimer</a>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+<!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+  
+  
+    {% endblock %}
+
+
+      

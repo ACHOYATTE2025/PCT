@@ -1,0 +1,97 @@
+{% extends 'base1.html' %}
+{% load static %}
+
+    
+  {% block content%}
+  <video id="background-video" autoplay loop muted style="height: 100vh;
+  width: 100vw;
+  object-fit: cover;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;">
+    <source src="https://assets.codepen.io/6093409/river.mp4" type="video/mp4">
+  </video>
+    
+
+  <div>
+    <br><br><br><br><br><br><br><br><br><br>
+   </div>
+  
+<main >
+     
+ 
+ 
+   {% if  user.is_authenticated %}    
+        <div>
+          <br>
+        </div>
+  {% endif %}    
+  {% if  user.is_authenticated %} 
+  <div class="album py-5 bg-light">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 g-3">
+      <div class="col">
+        <div class="card ">
+          <center><a href="{% url 'deces_list' %}"><img src="{% static 'img/deces.jpeg' %}" style='width:200px;border-radius:50%'></a></center>
+          <div class="card-body">
+            <center><h3 class="card-text"><b>CONSULTER</b></h3></center>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card ">
+          <center><a href="{% url 'deces_edit' %}"><img src="{% static 'img/deces.jpeg' %}" style='width:200px;border-radius:50%'></a></center>
+          <div class="card-body">
+            <center><h3 class="card-text"><b>AJOUTER</b></h3></center>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <center>
+    <div>
+        <a class="btn btn-primary  active" role="button" href="{% url 'base1'  %}">Retour</a>
+    </div>
+  </center>
+          
+   <div>
+    <br><br><br><br><br>
+   </div>
+  
+
+  {% else %} 
+        
+  
+        
+       
+
+        {% endif %} 
+  </div>
+  
+  <!-- Copyright -->
+  
+  <!-- Copyright -->
+        {% endblock %}
+  </div>
+  <br><br>
+</main>
+  <br>
+  {% if  user.is_authenticated %}    
+        <div>
+          <br>
+        </div>
+  {% endif %}          
+  
+ 
+
+  
+
+  
+   <!--- fenêtre modal-->
+   
+  </body>
+</html>
+
+    

@@ -1,0 +1,262 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <title>Gestion ALLAKRO website</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="{% static 'css/fontawesome.css' %}">
+    <link rel="stylesheet" href="{% static 'css/templatemo-tale-seo-agency.css'%}">
+    <link rel="stylesheet" href="{% static 'css/owl.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+<!--
+
+TemplateMo 582 Tale SEO Agency
+
+https://templatemo.com/tm-582-tale-seo-agency
+
+-->
+  </head>
+
+<body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+      window.setTimeout( function(){
+        $('.alert').fadeTo(500, 0).slideUp(500, function(){
+          $(this).remove();
+        });
+      },4000)
+    </script>
+   
+   
+
+  <!-- ***** Preloader Start ***** -->
+  <div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+  <!-- ***** Preloader End ***** -->
+
+  <!-- ***** Pre-Header Area Start ***** -->
+  <div class="pre-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-sm-9">
+          <div class="left-info">
+            <ul>
+              <li><a href="#"><i class="fa fa-phone"></i>+225 07 48 36 56 19</a></li>
+              <li><a href="#"><i class="fa fa-envelope"></i>infocompany@email.com</a></li>
+              <li><a href="#"><i class="fa fa-map-marker"></i>Abidjan</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-3">
+          <div class="social-icons">
+            <ul>
+              <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+              <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+              <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+              <li><a href="#"><i class="fab fa-google-plus"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ***** Pre-Header Area End ***** -->
+
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    <!-- ***** Logo Start ***** -->
+                    <a href="/" class="logo">
+                        <img src="{% static 'img/logolo.avif' %}" alt="" style="max-width: 112px;">
+                    </a>
+                    <!-- ***** Logo End ***** -->
+                    <!-- ***** Menu Start ***** -->
+                    <ul class="nav">
+                     
+                      <li class="scroll-to-section"><a href="/" class="active"><b style="font-size:30px">Allakro</a></b></li>
+                    
+                     {% if  user.is_authenticated %}
+                    
+                     {% if dash %} 
+                     <li><a class="scroll-to-section" href="{% url 'dashboard' %}" id='loge'>Tableau de bord</a></li>
+                     {% endif %} 
+                                        
+                     {% endif %} 
+                     {% if  user.is_authenticated %}
+                     <li class="scroll-to-section"><a href="#"><b style='color:yellow'>{{ firstname }} connecté(e)</b></a></li>
+                     {% endif %} 
+                     
+                     <li class="has-sub">
+                       <a href="javascript:void(0)">Recherche</a>
+                       <ul class="sub-menu">
+                         <form  >
+                           <input   class="scroll-to-section"type="text" placeholder="Entrer un nom" aria-label="Search" name="item_name">
+                           <button class="btn btn-md offset-md-2 btn-success " type="submit">Recherche</button>
+                         </form>
+                                    
+                       </ul>
+                   </li>
+                   <a class='menu-trigger'>
+                    <span>Menu</span>
+                </a>           
+                     
+                   </ul>  
+                    <!-- ***** Menu End ***** -->
+                </nav>
+            </div>
+        </div>
+    </div>
+  </header>
+  <!-- ***** Header Area End ***** -->
+  {% block content%}
+  <video id="background-video" autoplay loop muted style="height: 100vh;
+  width: 100vw;
+  object-fit: cover;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;">
+    <source src="https://assets.codepen.io/6093409/river.mp4" type="video/mp4">
+  </video>
+  
+  <br><br><br><br><br><br><br>
+  
+  <div  >
+    <br><br>
+    <center>{% for message in messages%}
+      <div  style=' width:800px ; font-size:18px' class= "alert alert-success alert-dismissible fade show" role="alert" >
+        <strong>{{ message}}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss ="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+            {% endfor %}
+  </center>
+  
+ <div class="row" > 
+  {% for item in list %}
+  {% if item.aff  %}
+  <div class="col-md-4">
+    <div class="card" >
+      <div class="card-body" style="background-color: rgb(158, 184, 184);">
+        <table class="table table-striped table-bordered"  style=" font-size:20px">  
+          
+          <tr><td class="text-primary"><b>Naissance N° </b></td><td  style="width: 350px"><b style=" color : purple "; ><center>{{ item.naissance.id}}</center></b></td></tr>  
+          <tr><td><b style="color:green">Nom du nouveau née</b></td><td>{{ item.naissance.nom_nouveau_ne }}</td></tr>  
+          <tr><td><b style="color:green">Genre</b></td><td>{{ item.naissance.genre}}</td></tr>  
+          <tr><td><b style="color:green">Date de naissance</b></td><td>{{ item.naissance.date_naissance_enfant}}</td></tr>
+          <tr><td><b style="color:green">mode_naissance </b></td><td>{{ item.naissance.mode_naissance  }}</td></tr>  
+          <tr><td><b style="color:green">Nom du père</b></td><td>{{ item.naissance.nom_pere }}</td></tr>  
+          <tr><td><b style="color:green">Nom de la mère</b></td><td>{{ item.naissance.nom_mere }}</td></tr>  
+          <tr><td><b style="color:green">Lieu d'habitation</b></td><td>{{ item.naissance.lieu_habitation  }}</td></tr>  
+                   
+        </table> 
+        {% if delete %}
+        <a class="btn btn-warning btn active" role="button" href="{% url 'naissance_edit' item.naissance.pk  %}">Editer les informations</a>
+           
+        <span ><a class="btn btn-danger btn active" data-bs-toggle="modal" data-bs-target="#modal" role="button" >Supprimer</a></span>
+            {% endif %}
+            <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    
+                  </div>
+                  <div class="modal-body">
+                    <center><p>Vous êtes sur le point de supprimer definitivement!!!🚨🚨🚨</p></center>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <a type="button" class="btn btn-warning" href="{% url 'naissance_delete' item.naissance.pk %}" >Supprimer</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+        
+    
+       
+      </div>
+    </div>
+    </div>
+    {% endif  %}
+    {% endfor %}
+  </div>
+ <div class="row mt-3" style=' margin-left:300px'>
+  <div class="col-md-3 offset-md-4">
+    <ul class="pagination">
+      {% if it.has_previous %}
+      <li class="page_item">
+        <a class="page-link" href="?page={{it.previous_page_number}}">Precedent</a>
+      </li>
+      {% endif %}
+
+      <li class="page-item active">
+        <a  class="page-link" href="?page={{it.number}}">{{it.number}}</a>
+      </li>
+
+      {% if it.has_next %}
+      <li class="page_item">
+        <a  class="page-link" href="?page={{it.next_page_number}}">Suivant</a>
+      </li>
+      {% endif %}
+    </ul>
+  </div>
+ </div>
+ <center>
+  <div>
+   <a class="btn btn-primary  active" role="button" href="{% url 'services_naissance'  %}">Retour</a>
+ </div>
+ </center>
+ {% endblock %}
+ <footer>
+  <div class="container">
+    <div class="col-lg-12">
+      <p>Copyright © 2023 <a href="#">Gestion Allakro</a>. All rights reserved. 
+      
+      <br>Design: <a href="https://groupe01.pct.com" target="_blank"></a></p>
+    </div>
+  </div>
+</footer>
+ <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+  <script src="{% static 'jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+
+  <script src="{% static 'js/isotope.min.js' %}"></script>
+  <script src="{% static 'js/owl-carousel.js'%}"></script>
+  <script src="{% static 'js/tabs.js' %}"></script>
+  <script src="{% static 'js/popup.js' %}"></script>
+  <script src="{% static 'js/custom.js' %}"></script>
+
+
+  
+</body>
+</html>

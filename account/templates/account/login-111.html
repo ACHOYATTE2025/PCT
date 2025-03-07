@@ -1,0 +1,204 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+        <title>Gestion ALLAKRO</title>
+    
+        <!-- Bootstrap core CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href ="{%  static '/boot/css/bootstrap.css' %}" />
+    <link src ="{%  static '/boot/js/bootstrap.bundle.min.js' %}" />
+    <link rel="stylesheet" href ="{%  static '/boot/css/menu.css' %}" />
+    <link rel="stylesheet" href ="{%  static '/css/services.css' %}" />
+    <link src="{%  static '/boot/js/menu.js' %}" />
+    <link  rel="stylesheet"   href="{% static '/css/navbar.css' %}" >
+    <link rel="stylesheet" href="{% static '/css/signin.css' %}" >
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="navbar-top-fixed.css" rel="stylesheet">
+  </head>
+  <body  style='display: flex;align-items: center;padding-top: 40px;background-color: #f5f5f5;'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+      window.setTimeout( function(){
+        $('.alert').fadeTo(500, 0).slideUp(500, function(){
+          $(this).remove();
+        });
+      },4000)
+    </script>
+    
+  </style>
+  <header>  
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark" aria-label="Tenth navbar example">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">
+                <img src=" {% static '/img/vivi.png' %}" alt='PCT 2023' style="width: 40px; height: 40px; border-radius:10px"/>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/">ALLAKRO</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle active" href="#" id="dropdown08" data-bs-toggle="dropdown" aria-expanded="false">&#9776;Menu</a>
+              <ul class="dropdown-menu" aria-labelledby="dropdown08">
+                {% if  user.is_authenticated %}
+                <li><a class="dropdown-item" href="{% url 'base1' %}">Services</a></li>
+                <li><a class="dropdown-item" href="/log_out/">Déconnexion</a></li>
+                {% else %}
+                <li><a class="dropdown-item" href="{% url 'login' %}">Connexion</a></li>
+                <li><a class="dropdown-item" href="{% url 'galerie' %}">Galerie</a></li>
+                {% endif %}
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="#" tabindex="-1" aria-disabled="true" data-bs-toggle="modal" data-bs-target="#exampleModal">Informations</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+  {% block content%}
+  <video id="background-video" autoplay loop muted style="height: 100vh;
+  width: 100vw;
+  object-fit: cover;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;">
+    <source src="https://assets.codepen.io/6093409/river.mp4" type="video/mp4">
+  </video>
+  
+
+<main class="form-signin">
+ 
+
+  <form  method="POST" action="{% url 'home' %}">
+    
+    {% csrf_token %}
+    <center><img class="mb-4"  src=" {% static '/img/vivi.png' %}" alt="" width="72" height="57" style='border-radius:10px'/></center>
+    <center><h1 class="h3 mb-5 fw-normal">S'il vous plait Identifiez vous!</h1></center>
+    {% if error %}
+    {% for message in messages%}
+                     
+    <div class= "alert alert-warning alert-dismissible fade show" role="alert" >
+      <center><strong>{{ message}}</strong></center>
+      <button type="button" class="btn-close" data-bs-dismiss ="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      </div> 
+      {% endfor %}
+      {%else %}
+      {% for message in messages%}
+      <div class= "alert alert-success alert-dismissible fade show" role="alert" >
+        <strong>{{ message}}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss ="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      {% endfor %}
+    {% endif %}
+    <div  >                 
+    <div class="col" >
+      <div class="card "   >
+        <div class="card-body">
+
+    <div class="form-floating">
+      <input type="text" class="form-control" id="username" placeholder="username" name="username">
+      <label for="typeTextX">Username</label>
+    </div>
+    <div class="form-floating">
+      <input type="password" class="form-control" id="password" placeholder="password"  name="password">
+      <label for="typePasswordX">Password</label>
+    </div>
+
+    <div class="checkbox mb-3">
+      <center> <label> Vous n'avez pas de compte?
+        <a href="{% url 'register' %}"> <b>Inscrivez vous</b></a>
+      </label>
+
+    </div>
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Soumettre</button>
+    <center><p class="mt-5 mb-3 text-muted">&copy; 2023</p></center>
+    </div>
+  </center>
+</div>
+</div>
+</div>
+  </form>
+  <footer class="page-footer font-small blue" st>
+    <div class="footer-copyright text-center py-3">© 2023 Copyright:
+      <a href="https://www.groupe01pct.com"> Groupe 01 PCT Developpement</a>
+      <p>Website by: Groupe 01 PCT 2023</p>
+      <p>Contact information: <a href="mailto:acho.quebec@gmail.com">acho.quebec@gmail.com</a></p>
+    </div>
+  </footer>
+  <!-- Copyright -->
+</main>
+<!-- Copyright -->
+
+
+  
+  </div>
+  <br><br>
+</main>
+  <br>
+  {% if  user.is_authenticated %}    
+        <div>
+          <br>
+        </div>
+  {% endif %}          
+  
+  {% endblock %}
+   <!--- fenêtre modal-->
+   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          Le Projet Commun Tutoré abregé PCT est un projet de fin de cycle àl'UVCI visant à mettre en lumière 
+          les compétences et les connaissances acquises des étudiants durant les 3 ans de formation
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>  
+  </body>
+</html>
+
+    
+

@@ -1,0 +1,71 @@
+{% extends 'base1.html' %}
+{% load static %}
+
+
+  
+{% block content%}
+<br><br><br><br>
+
+
+<center>{% for message in messages%}
+      <div  style=' width:800px ; font-size:25px' class= "alert alert-success alert-dismissible fade show" role="alert" >
+        <strong>{{ message}}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss ="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+</center>
+{% endfor %}
+  <center>
+    
+    <marquee behavior="alternate">
+      <h3>Veuillez bien renseigner les Informations</h3>
+    </marquee>
+  </center></h2>  
+
+  <br>
+<center>
+<div class="card mx-10 mx-md-12 shadow-5-strong" style="
+  margin-top: -10px;
+  background: hsla(0, 0%, 100%, 0.8);
+  backdrop-filter: blur(30px);">
+<div class="card-body py-5 px-md-5">
+  <div class="row d-flex justify-content-center">
+    <div class="col-lg-4">
+      <div class="card" >
+        <div class="card-body">
+      <div class="form-group ">
+        <div class="row g-3 align-items-center">
+        <form method="POST"  action="" >
+            {% csrf_token %}
+            {{ form.as_table }}
+        
+          <br>
+          <button type="submit" class="btn btn-warning">
+         Enregistrer
+          </button>
+          <a class="btn btn-primary  active" role="button" href="{% url 'pharmacie_list'  %}">Retour</a>
+         
+        </form> 
+      </div>
+    </div>
+    </div>
+  </div>
+  </div>
+</div>
+</div>
+</center>
+<br><br>
+<!-- Copyright -->
+<footer class="page-footer font-small blue" st>
+<div class="footer-copyright text-center py-3">© 2023 Copyright:
+  <a href="https://www.groupe01pct.com"> Groupe 01 PCT Developpement</a>
+  <p>Website by: Groupe 01 PCT 2023</p>
+  <p>Contact information: <a href="mailto:acho.quebec@gmail.com">acho.quebec@gmail.com</a></p>
+</div>
+</footer>
+<!-- Copyright -->
+{% endblock %}
+       
+  
+    
