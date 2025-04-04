@@ -1,4 +1,4 @@
-# PCT - Plateforme d'État Civil (Django)
+# PCT - Plateforme de Gestion d'Allakro (Django)
 
 Ce projet est une application Django destinée à gérer la communauté vivante à allakro.Elle permet aux administrateurs,  citoyens de consulter ou enregistrer différents documents officiels (naissance, mariage, décès, etc.).
 
