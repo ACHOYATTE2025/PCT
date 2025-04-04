@@ -1,11 +1,10 @@
 # PCT - Plateforme d'État Civil (Django)
 
-Ce projet est une application Django destinée à gérer les actes d’état civil. Elle permet aux administrateurs, agents d’état civil et citoyens de consulter ou enregistrer différents documents officiels (naissance, mariage, décès, etc.).
+Ce projet est une application Django destinée à gérer la communauté vivante à allakro.Elle permet aux administrateurs,  citoyens de consulter ou enregistrer différents documents officiels (naissance, mariage, décès, etc.).
 
 ## Fonctionnalités principales
 
-- Gestion des utilisateurs avec rôles (Admin, Agent, Utilisateur)
-- Création d’actes d’état civil
+- Gestion des utilisateurs avec rôles (Admin, Utilisateur)
 - Gestion des localités, personnes morales, physiques
 - Interface d’administration via Django admin
 - Système d’authentification intégré (connexion / déconnexion)
